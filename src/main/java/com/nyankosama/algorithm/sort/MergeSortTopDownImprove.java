@@ -7,51 +7,57 @@ public class MergeSortTopDownImprove implements Sortable{
     //NOTE
     //1. 数量 <= 15的数组使用插入排序
     //2. 在merge前判断a[mid] <= a[mid+1]跳过merge
-    //3. 只复制一次到aux中，merge中的复制可以避免
+    //3. aux和a数组，在子递归中不断调换其作用，可以节省辅助数组复制的操作
 
     private Comparable[] aux;
 
-    private static final int INSERT_SORT_THREASHOLD= 15;
+    private int sortCount = 0;//用于判断a, b数组交换, 若为基数则正确的数据在a中，否则在b中
+
+    private static final int INSERT_SORT_THRESHOLD= 15;
+
 
     @Override
     public void sort(Comparable[] a) {
-        aux = new Comparable[a.length];
-        sort(a, 0, a.length - 1);
+        //初始化aux
+        int N = a.length;
+        aux = new Comparable[N];
+        System.arraycopy(a, 0, aux, 0, N);
+        sort(a, aux, 0, N - 1);
+        if (sortCount % 2 == 0) {
+            System.arraycopy(aux, 0, a, 0, N);
+        }
     }
 
-    private void sort(Comparable[] a, int low, int high) {
+    private void sort(Comparable[] a, Comparable[] b, int low, int high) {
+        sortCount++;
         int N = a.length;
         //NOTE 使用插入排序排序小数组
-        if (high - low <= INSERT_SORT_THREASHOLD) {
+        if (high - low <= INSERT_SORT_THRESHOLD) {
             insertSort(a, low, high);
-            //这里直接复制，避免merge的时候重复复制
-            for (int i = low; i <= high; i++) {
-                aux[i] = a[i];
-            }
             return;
         }
         int mid = low + (high - low) / 2;
-        sort(a, low, mid);
-        sort(a, mid + 1, high);
+        //调换aux和a数组的作用
+        sort(b, a, low, mid);
+        sort(b, a, mid + 1, high);
         //判断 a[mid] <= a[mid+1]，如果是则跳过merge
-        if (!less(a[mid], a[mid + 1]))
-            merge(a, low, mid, high);
+        if (!less(b[mid], b[mid + 1]))
+            merge(b, a, low, mid, high);
     }
 
-    private void merge(Comparable[] a, int low, int mid, int high) {
+    private void merge(Comparable[] a, Comparable[] b, int low, int mid, int high) {
         int N = a.length;
         int left = low;
         int right = mid + 1;
         for (int i = low; i <= high; i++) {
-            if (left > mid) a[i] = aux[right++];
-            else if(right > high) a[i] = aux[left++];
-            else if (less(aux[left], aux[right])) a[i] = aux[left++];
-            else a[i] = aux[right++];
+            if (left > mid) a[i] = b[right++];
+            else if(right > high) a[i] = b[left++];
+            else if (less(b[left], b[right])) a[i] = b[left++];
+            else a[i] = b[right++];
         }
     }
 
     private void insertSort(Comparable[] a, int low, int high) {
-        int N = high - low + 1;
         for (int i = low; i <= high; i++) {
             Comparable v = a[i];
             int j = 0;

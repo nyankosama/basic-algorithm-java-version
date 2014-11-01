@@ -11,7 +11,7 @@ import java.util.*;
  * Created by i@nyankosama.com on 2014/10/30.
  */
 public class TestSort {
-    private static final int ARRAY_NUM = 100;
+    private static final int ARRAY_NUM = 1000;
     private Comparable<Integer> num[];
     private Sortable sortUtils = a -> {};
     private Set<Sortable> toValidate = new HashSet<>();
@@ -62,6 +62,7 @@ public class TestSort {
     public void testTopDownMergeSort() {
         validate(new MergeSortTopDown());
         validate(new MergeSortTopDownImprove());
+        validate(new MergeSortButtonUp());
     }
 
 }
