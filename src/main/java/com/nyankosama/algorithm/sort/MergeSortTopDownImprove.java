@@ -13,7 +13,7 @@ public class MergeSortTopDownImprove implements Sortable{
 
     private int sortCount = 0;//用于判断a, b数组交换, 若为基数则正确的数据在a中，否则在b中
 
-    private static final int INSERT_SORT_THRESHOLD= 15;
+    private static final int INSERT_SORT_THRESHOLD= 3;
 
 
     @Override
@@ -23,13 +23,12 @@ public class MergeSortTopDownImprove implements Sortable{
         aux = new Comparable[N];
         System.arraycopy(a, 0, aux, 0, N);
         sort(a, aux, 0, N - 1);
-        if (sortCount % 2 == 0) {
+        if (sortCount % 2 == 1) {
             System.arraycopy(aux, 0, a, 0, N);
         }
     }
 
     private void sort(Comparable[] a, Comparable[] b, int low, int high) {
-        sortCount++;
         int N = a.length;
         //NOTE 使用插入排序排序小数组
         if (high - low <= INSERT_SORT_THRESHOLD) {
@@ -41,8 +40,11 @@ public class MergeSortTopDownImprove implements Sortable{
         sort(b, a, low, mid);
         sort(b, a, mid + 1, high);
         //判断 a[mid] <= a[mid+1]，如果是则跳过merge
+        sortCount++;
         if (!less(b[mid], b[mid + 1]))
             merge(b, a, low, mid, high);
+        else
+            System.arraycopy(b, low, a, low, high - low + 1);
     }
 
     private void merge(Comparable[] a, Comparable[] b, int low, int mid, int high) {

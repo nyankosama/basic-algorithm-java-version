@@ -7,10 +7,23 @@ public interface Sortable {
     public void sort(Comparable[] a);
 
     public default boolean less(Comparable a, Comparable b) {
-        if (a.compareTo(b) < 0)
-            return true;
-        else
-            return false;
+        return a.compareTo(b) < 0;
+    }
+
+    public default boolean lessEq(Comparable a, Comparable b){
+        return a.compareTo(b) <= 0;
+    }
+
+    public default boolean equals(Comparable a, Comparable b){
+        return a.compareTo(b) == 0;
+    }
+
+    public default boolean greter(Comparable a, Comparable b){
+        return a.compareTo(b) > 0;
+    }
+
+    public default boolean greterEq(Comparable a, Comparable b){
+        return a.compareTo(b) >= 0;
     }
 
     public default void exch(Comparable[] a, int i, int j) {
