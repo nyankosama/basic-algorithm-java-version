@@ -1,12 +1,11 @@
 package com.nyankosama.test;
 
-import com.nyankosama.algorithm.*;
+import com.nyankosama.algorithm.sort.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by i@nyankosama.com on 2014/10/30.
@@ -14,6 +13,12 @@ import java.util.List;
 public class TestSort {
     private static final int ARRAY_NUM = 100;
     private Comparable<Integer> num[];
+    private Sortable sortUtils = a -> {};
+    private Set<Sortable> toValidate = new HashSet<>();
+
+    private void validate(Sortable sortable) {
+        toValidate.add(sortable);
+    }
 
     @Before
     public void setUp() {
@@ -26,32 +31,37 @@ public class TestSort {
         num = list.toArray(num);
     }
 
+    @After
+    public void after() {
+        for (Sortable sortable : toValidate) {
+            sortable.sort(num);
+            assert  sortUtils.isSorted(num);
+            setUp();
+        }
+        toValidate.clear();
+    }
+
     @Test
     public void testSelectionSort() {
-        Sortable sort = new SelectionSort();
-        sort.sort(num);
-        assert sort.isSorted(num);
+        validate(new SelectionSort());
     }
 
     @Test
     public void testInsertSort() {
-        Sortable sort1 = new InsertSort();
-        Sortable sort2 = new InsertSortImpoved();
-        Sortable sort3 = new InsertSortBinary();
-        sort1.sort(num);
-        assert sort1.isSorted(num);
-        setUp();
-        sort2.sort(num);
-        assert sort2.isSorted(num);
-        setUp();
-        sort3.sort(num);
-        assert sort3.isSorted(num);
+        validate(new InsertSort());
+        validate(new InsertSortImpoved());
+        validate(new InsertSortBinary());
     }
 
     @Test
     public void testShellSort() {
-        Sortable sort = new ShellSort();
-        sort.sort(num);
-        assert sort.isSorted(num);
+        validate(new ShellSort());
     }
+
+    @Test
+    public void testTopDownMergeSort() {
+        validate(new MergeSortTopDown());
+        validate(new MergeSortTopDownImprove());
+    }
+
 }

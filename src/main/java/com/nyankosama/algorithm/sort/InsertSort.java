@@ -1,4 +1,4 @@
-package com.nyankosama.algorithm;
+package com.nyankosama.algorithm.sort;
 
 /**
  * Created by i@nyankosama.com on 2014/10/30.
