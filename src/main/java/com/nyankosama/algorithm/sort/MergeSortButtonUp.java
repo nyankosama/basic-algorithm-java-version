@@ -10,8 +10,6 @@ public class MergeSortButtonUp implements Sortable{
 
     private Comparable[] aux;
 
-    private static final int INSERT_SORT_THREASHOLD= 15;
-
     @Override
     public void sort(Comparable[] a) {
         int N = a.length;
