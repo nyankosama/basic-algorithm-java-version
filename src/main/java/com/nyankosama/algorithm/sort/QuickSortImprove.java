@@ -7,6 +7,7 @@ public class QuickSortImprove implements Sortable {
     //NOTE
     //1. 小数组使用插入排序
     //2. 选取pivot的时候使用三取样切分
+    //3. 利用哨兵去掉内循环中的边界检查
 
     private static final int INSERT_SORT_THRESHOLD = 15;
 
@@ -32,14 +33,21 @@ public class QuickSortImprove implements Sortable {
         Comparable v = a[pivot];
         exch(a, low, pivot);
         int i = low;
-        int j = high + 1;
+        int j = high;//使用哨兵，每次腾出high位置的元素赋值为v
+        Comparable last = a[high];
+        a[high] = v;
         while (true) {
-            while (less(a[++i], v)) if (i == high) break;
-            while (less(v, a[--j])) if (j == low) break;
+            while (less(a[++i], v));
+            while (less(v, a[--j]));
             if (i >= j) break;
             exch(a, i, j);
         }
         exch(a, low, j);
+        //判断最后的元素
+        if (less(last, v)) {
+            exch(a, j + 1, high);
+            exch(a, j, j + 1);
+        }
         return j;
     }
 

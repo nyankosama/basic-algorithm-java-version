@@ -72,6 +72,7 @@ public class TestSort {
         validate(new QuickSort());
         validate(new QuickSortImprove());
         validate(new QuickSort3Way());
+        validate(new QuickSortNonRecursive());
     }
 
 }
