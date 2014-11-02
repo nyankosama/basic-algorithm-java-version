@@ -76,4 +76,9 @@ public class TestSort {
         validate(new QuickSortFast3Way());
     }
 
+    @Test
+    public void testHeapSort() {
+        validate(new HeapSort());
+    }
+
 }

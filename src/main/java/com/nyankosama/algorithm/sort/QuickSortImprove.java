@@ -60,7 +60,7 @@ public class QuickSortImprove implements Sortable {
             max = j;
         if (less(a[k], a[min]))
             min = k;
-        else if (greter(a[k], a[max]))
+        else if (greater(a[k], a[max]))
             max = k;
         return i + j + k - min - max;
     }

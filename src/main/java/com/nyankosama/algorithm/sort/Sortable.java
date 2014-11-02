@@ -18,11 +18,11 @@ public interface Sortable {
         return a.compareTo(b) == 0;
     }
 
-    public default boolean greter(Comparable a, Comparable b){
+    public default boolean greater(Comparable a, Comparable b){
         return a.compareTo(b) > 0;
     }
 
-    public default boolean greterEq(Comparable a, Comparable b){
+    public default boolean greaterEQ(Comparable a, Comparable b){
         return a.compareTo(b) >= 0;
     }
 
