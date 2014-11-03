@@ -1,6 +1,6 @@
 package com.nyankosama.test;
 
-import com.nyankosama.algorithm.datastructure.graph.Graph;
+import com.nyankosama.algorithm.datastructure.graph.undigraph.Graph;
 import org.junit.Test;
 
 /**

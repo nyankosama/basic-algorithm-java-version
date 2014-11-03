@@ -1,4 +1,4 @@
-package com.nyankosama.algorithm.datastructure.graph;
+package com.nyankosama.algorithm.datastructure.graph.undigraph;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package com.nyankosama.algorithm.datastructure.graph;
+package com.nyankosama.algorithm.datastructure.graph.undigraph;
 
 /**
  * Created by i@nyankosama.com on 2014/11/3.
