@@ -1,4 +1,4 @@
-package com.nyankosama.algorithm.datastructure;
+package com.nyankosama.algorithm.datastructure.pq;
 
 /*************************************************************************
  *  Compilation:  javac IndexMinPQ.java

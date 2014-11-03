@@ -1,6 +1,6 @@
 package com.nyankosama.test;
 
-import com.nyankosama.algorithm.datastructure.MaxPQ;
+import com.nyankosama.algorithm.datastructure.pq.MaxPQ;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.nyankosama.algorithm.datastructure;
+package com.nyankosama.algorithm.datastructure.pq;
 
 /**
  * Created by i@nyankosama.com on 2014/11/2.
