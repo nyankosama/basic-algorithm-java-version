@@ -23,7 +23,6 @@ public class KosarajuSCC {
                 count++;
             }
         }
-
     }
 
     private void dfs(Digraph G, int v) {

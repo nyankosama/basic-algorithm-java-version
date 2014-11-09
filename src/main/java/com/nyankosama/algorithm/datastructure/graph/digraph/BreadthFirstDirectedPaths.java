@@ -145,7 +145,7 @@ public class BreadthFirstDirectedPaths {
      */
     public Iterable<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
-        Stack<Integer> path = new Stack<Integer>();
+        Stack<Integer> path = new Stack<>();
         int x;
         for (x = v; distTo[x] != 0; x = edgeTo[x])
             path.push(x);

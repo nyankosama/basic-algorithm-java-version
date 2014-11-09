@@ -91,7 +91,7 @@ public class DepthFirstDirectedPaths {
      */
     public Iterable<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
-        Stack<Integer> path = new Stack<Integer>();
+        Stack<Integer> path = new Stack<>();
         for (int x = v; x != s; x = edgeTo[x])
             path.push(x);
         path.push(s);
