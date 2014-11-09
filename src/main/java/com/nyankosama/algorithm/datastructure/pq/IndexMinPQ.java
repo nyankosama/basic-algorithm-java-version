@@ -138,15 +138,6 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
     /**
      * Change the key associated with index i to the specified value.
      * @throws java.lang.IndexOutOfBoundsException unless 0 &le; i < NMAX
-     * @deprecated Replaced by changeKey()
-     */
-    @Deprecated public void change(int i, Key key) {
-        changeKey(i, key);
-    }
-
-    /**
-     * Change the key associated with index i to the specified value.
-     * @throws java.lang.IndexOutOfBoundsException unless 0 &le; i < NMAX
      * @throws java.util.NoSuchElementException no key is associated with index i
      */
     public void changeKey(int i, Key key) {

@@ -12,6 +12,7 @@ public class LazyPrimMST {
     //NOTE
     //1. 延时的Prim算法
     //2. 会用最小优先队列来计算横切边
+    //3. 在不断迭代的时候才会进行无效边删除操作
 
     private boolean[] marked;
     private Queue<Edge> mst;
