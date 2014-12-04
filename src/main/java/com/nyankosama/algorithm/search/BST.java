@@ -1,5 +1,8 @@
 package com.nyankosama.algorithm.search;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by i@nyankosama.com on 2014/12/4.
  * 二叉查找树
@@ -114,5 +117,20 @@ public class BST<Key extends  Comparable<Key>, Value> {
         else x.val = val;
         x.N = size(x.left) + size(x.right) + 1;
         return x;
+    }
+
+    public Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> queue = new LinkedList<>();
+        keys(queue, root, lo, hi);
+        return queue;
+    }
+
+    private void keys(Queue<Key> queue, Node x, Key lo, Key hi) {
+        if (x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) keys(queue, x.left, lo, hi);
+        if (cmplo <= 0 && cmphi >= 0) queue.offer(x.key);
+        if (cmphi > 0) keys(queue, x.right, lo, hi);
     }
 }
