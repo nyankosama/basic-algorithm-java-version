@@ -5,12 +5,14 @@ import com.nyankosama.algorithm.datastructure.pq.IndexMinPQ;
 import java.util.Stack;
 
 /**
- * Created by i@nyankosama.com on 2014/12/4.
+ * Dijkstra算法实现
+ * 计算根节点为给定初始节点的最短路径树所需空间与V成正比
+ * 所需时间与ElogV成正比
  */
 public class DijkstraSP {
     private DirectedEdge[] edgeTo;
     private double[] distTo;
-    private IndexMinPQ<Double> pq;
+    private IndexMinPQ<Double> pq; //每次取点时总是从distTo[v]路径最短的点开始继续遍历
 
     public DijkstraSP(EdgeWeightedDigraph G, int s) {
         edgeTo = new DirectedEdge[G.V()];
