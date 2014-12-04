@@ -4,6 +4,9 @@ import com.nyankosama.algorithm.datastructure.pq.MaxPQ;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by i@nyankosama.com on 2014/11/2.
  */
