@@ -3,6 +3,8 @@ package com.nyankosama.algorithm.string;
 /**
  * 高位优先的字符串排序
  * 字符串长度可以不相等
+ * 算法复杂度：
+ * 将基于大小为R的字母表的N个字符串进行排序，需要平均检查Nlogr(N)个字符
  */
 public class MSD {
     private static final int R             = 256;   // 基数
