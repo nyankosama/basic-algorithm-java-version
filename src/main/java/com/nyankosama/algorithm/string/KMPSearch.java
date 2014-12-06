@@ -3,6 +3,7 @@ package com.nyankosama.algorithm.string;
 /**
  * KMP算法
  * 具体理解见：http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html
+ * 对于长度为M的模式文本和长度为N的文本，KMP算法访问字符不会超过M+N个
  */
 public class KMPSearch {
 
