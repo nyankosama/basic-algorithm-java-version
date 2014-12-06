@@ -34,7 +34,7 @@ public class TrieST<Value> {
         if (x == null) x = new Node<>();
         if (d == key.length()) { x.val = val; return x;}
         char c = key.charAt(d);
-        x.next[x] = put(x.next[c], key, val, d + 1);
+        x.next[c] = put(x.next[c], key, val, d + 1);
         return x;
     }
 }
