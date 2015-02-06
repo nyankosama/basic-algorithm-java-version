@@ -34,6 +34,21 @@ public interface Sortable {
         return a.compareTo(b) <= 0 ? a : b;
     }
 
+    public default void reverse(Comparable a[], int begin, int length) {
+        int i = begin, j = begin + length - 1;
+        while (i < j) {
+            exch(a, i, j);
+            i++;
+            j--;
+        }
+    }
+
+    public default void moveLeft(Comparable a[], int begin, int length, int step) {
+        reverse(a, begin, step);
+        reverse(a, begin + step, length - step);
+        reverse(a, begin, length);
+    }
+
     public default void exch(Comparable[] a, int i, int j) {
         Comparable t = a[i];
         a[i] = a[j];
