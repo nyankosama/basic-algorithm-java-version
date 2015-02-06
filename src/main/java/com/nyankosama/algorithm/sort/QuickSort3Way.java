@@ -32,6 +32,7 @@ public class QuickSort3Way implements Sortable {
             else if (cmp > 0) exch(a, i, gt--);
             else i++;
         }
+        //如此一来就忽略相等元素，不必再排序
         sort(a, low, lt - 1);
         sort(a, gt + 1, high);
     }

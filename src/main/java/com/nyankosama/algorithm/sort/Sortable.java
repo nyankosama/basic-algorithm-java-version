@@ -26,6 +26,14 @@ public interface Sortable {
         return a.compareTo(b) >= 0;
     }
 
+    public default Comparable max(Comparable a, Comparable b) {
+        return a.compareTo(b) >= 0 ? a : b;
+    }
+
+    public default Comparable min(Comparable a, Comparable b) {
+        return a.compareTo(b) <= 0 ? a : b;
+    }
+
     public default void exch(Comparable[] a, int i, int j) {
         Comparable t = a[i];
         a[i] = a[j];
