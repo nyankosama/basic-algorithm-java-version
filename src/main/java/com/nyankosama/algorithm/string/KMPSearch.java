@@ -20,8 +20,7 @@ public class KMPSearch {
                     //匹配0个, 直接后移一位
                     i++;
                 } else {
-                    i -= pmt[j - 1]; //根据pmt回退
-                    j = 0;
+                    j = pmt[j - 1]; //模式匹配串移动到下一个位置
                 }
             } else {
                 //匹配成功，继续匹配下一位
@@ -35,17 +34,26 @@ public class KMPSearch {
             return -1; //未找到
     }
 
+    /**
+     * 算法的关键在于next数组的生成,用动态规范法生成。
+     * 比如：str = abcabd，next初始化为：[0,0,0,0,0,0];
+     * 已知第0个字符a没有任何相同的前后缀，则next[0] = 0。
+     * 加入第1个字符，则前面已知的最长公共前后缀长度为next[0]，此时如果str[next[0]]与str[1]相等，就可知道next[1]=next[0]+1，如不相等则可直接判定next[1]=0；这里str[next[0]]!=str[1]，故next[1]=0。
+     * ...，next[2]=0。
+     * ...，next[3]=next[2]+1=1。
+     * ...，next[4]=next[3]+1=2。
+     * ...，next[5]=0。
+     * 最后，next=[0,0,0,1,2,0];
+     * @param pmt
+     * @param pat
+     */
     private static void createPMT(int[] pmt, String pat) {
-        int M = pat.length();
-        for (int i = 1; i <= M; i++) {
-            String match = pat.substring(0, i);
-            int max = 0;
-            for (int j = 1; j < i; j++) {
-                String pre = match.substring(0, j);
-                String post = match.substring(i - j, i);
-                if (pre.equals(post)) max = j;
+        for (int i = 1; i < pat.length(); i++) {
+            if (pat.charAt(pmt[i - 1]) == pat.charAt(i)) {
+                pmt[i] = pmt[i - 1] + 1;
+            } else {
+                pmt[i] = 0;
             }
-            pmt[i - 1] = max;
         }
     }
 }
