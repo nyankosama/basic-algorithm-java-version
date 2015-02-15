@@ -29,10 +29,18 @@ public class QuickSortFast3Way implements Sortable {
             while (less(v, a[--j])) if (j == low) break;
             if (i >= j) break;
             exch(a, i, j);
-            if (a[i] == v) { p++; exch(a, p, i); }
-            if (v == a[j]) { q--; exch(a, j, q); }
+            if (a[i] == v) {
+                p++;
+                exch(a, p, i);
+            }
+            if (v == a[j]) {
+                q--;
+                exch(a, j, q);
+            }
         }
-        exch(a, i, high); j = i-1; i = i+1;
+        exch(a, i, high);
+        j = i - 1;
+        i = i + 1;
         for (int k = low; k < p; k++, j--) exch(a, k, j);
         for (int k = high - 1; k > q; k--, i++) exch(a, i, k);
 
@@ -59,7 +67,7 @@ public class QuickSortFast3Way implements Sortable {
             Comparable v = a[i];
             int j;
             for (j = i; j > 0 && less(v, a[j - 1]); j--) {
-                a[j] = a[j-1];
+                a[j] = a[j - 1];
             }
             a[j] = v;
         }
