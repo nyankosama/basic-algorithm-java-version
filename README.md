@@ -8,8 +8,9 @@
 
 ------
 
-###算法实现
-* ####排序
+### 算法实现
+
+#### 排序
  * HeapSort 堆排序
  * InsertSort 插入排序
  * InsertSortBinary 二分优化插入排序
@@ -25,10 +26,10 @@
  * SelectionSort 选择排序
  * ShellSort 希尔排序
 
-* ####搜索
+#### 搜索
  * BST 二叉查找树
 
-* ####字符串相关
+#### 字符串相关
  * LSD 低位优先的字符串排序
  * MSD 高位优先的字符串排序
  * TrieST Trie树实现符号表
@@ -36,7 +37,7 @@
  * NaiveSearch 子串查找暴力解法
  * KMPSearch KMP算法求子串
 
-* ####图相关
+#### 图相关
  * DepthFirstSearch 深度优先搜索
  * DepthFirstPaths 深度优先搜索路径
  * BreadthFirstPaths 广度优先搜索路径
@@ -58,7 +59,7 @@
  * LazyPrimMST Prim算法延时版实现
 
 
-* ####其他数据结构
+#### 其他数据结构
  * IndexMinPQ 最小索引堆
  * MaxPQ 最大堆
  * MinPQ 最小堆
